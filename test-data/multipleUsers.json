@@ -1,0 +1,32 @@
+[
+   {
+    "id":"1",
+    "username":"admin@email.com",
+    "password":"admin@1234",
+    "message":"Email and Password Doesn't match"
+   },
+   
+   {
+    "id":"2",
+    "username":"admin1@email.com",
+    "password":"",
+    "message":"Password is required"
+   },
+
+   {
+    "id":"3",
+    "username":"",
+    "password":"admin@123",
+    "message":"Email is required"
+   }
+   ,
+   {
+    "id":"4",
+    "username":"",
+    "password":"",
+    "message":"Email and Password is required"
+   }
+
+
+
+]
