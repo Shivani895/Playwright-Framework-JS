@@ -17,3 +17,14 @@ test('login and logout functionality',async ({page})=>{
      await dashboardPage.clickOnSignOutButton();
 })
 })
+test('login and logout functionality copy',async ({page})=>{
+    await page.goto('/login');
+
+    const loginPage =new LoginPage(page);
+    console.log(`Username is : ${user.userName} and Password is ${user.password}`);
+    
+   await loginPage.loginToApplication(user.userName,user.password);
+      const dashboardPage = new DashboardPage(page);
+     await dashboardPage.clickOnMenuIcon();
+     await dashboardPage.clickOnSignOutButton();
+})
