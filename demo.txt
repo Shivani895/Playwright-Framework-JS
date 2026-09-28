@@ -1,1 +1,3 @@
-this is simple txt file just fo rgit practice from local
+this is simple txt file just fo rgit practice from local - updated file
+
+this new line is added from remote repo
