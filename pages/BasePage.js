@@ -29,7 +29,7 @@ export class BasePage {
     }
 
     async getText(locator) {
-        await locator.innerText();
+       return await locator.innerText();
         console.log(`**** Text is : ${locator.innerText()}`);
 
     }
