@@ -10,7 +10,7 @@ test.describe('login and logout test', { tags: ['smoke', 'login'] }, () => {
         await page.goto('/login');
 
 
-
+//added comment
         await loginPageFixture.loginToApplication(user.userName, user.password);
 
         await dashboardPage.clickOnMenuIcon();
