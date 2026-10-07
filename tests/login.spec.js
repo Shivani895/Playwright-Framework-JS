@@ -9,8 +9,6 @@ test.describe('login and logout test', { tags: ['smoke', 'login'] }, () => {
     test('login and logout functionality', async ({ page, loginPageFixture, dashboardPage }) => {
         await page.goto('/login');
 
-
-//added comment
         await loginPageFixture.loginToApplication(user.userName, user.password);
 
         await dashboardPage.clickOnMenuIcon();
