@@ -1,4 +1,3 @@
-//adding common methods
 
 
 export class BasePage {
