@@ -2,11 +2,27 @@ pipeline{
     agent any
 
     stages{
-        stage('First Pipeline'){
+       
+        stage('Install Dependencies')
+        {
             steps{
-                sh 'pwd'
-                sh 'ls -la'
+                sh 'npm ci'
             }
         }
+
+        stage('Install Playwright Browsers')
+        {
+            steps{
+                sh 'npx playwright install'
+            }
+        }
+
+        stage('Run Tests')
+        {
+            steps{
+                sh 'npx playwright test'
+            }
+        }
+
     }
 }
