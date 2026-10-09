@@ -61,6 +61,17 @@ choice(
     }
 }
 
+stage('QA Environment Check') {
+    when {
+        expression {
+            params.ENVIRONMENT == 'QA'
+        }
+    }
+    steps {
+        echo 'QA environment selected. Running QA-specific checks.'
+    }
+}
+
 
 
 
