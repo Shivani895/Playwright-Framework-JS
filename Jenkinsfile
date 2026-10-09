@@ -18,7 +18,7 @@ pipeline{
         description: 'Select the browser to execute tests'
     )
     choice( name: 'ENVIRONMENT',
-     choices: ['PRACTICE', 'DEV', 'QA', 'UAT'], 
+     choices: ['PRACTICE', 'DEV', 'QA', 'UAT' , 'STAGING'], 
      description: 'Select the target environment' )
      
 choice(
