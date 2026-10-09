@@ -16,6 +16,7 @@ pipeline{
         {
             steps{
                 echo "Selected Browser: ${params.BROWSER}"
+                echo "Selected Enviornment: ${params.ENVIRONMENT}"
             }
         }
        
