@@ -6,7 +6,7 @@ import user from '../test-data/user.json'
 in a page it would be in same page */
 test.describe('login and logout test', { tags: ['smoke', 'login'] }, () => {
     // why , is used in destructuring i thought for loginpagefixture we wil be needed whole. new {}
-    test('login and logout functionality', async ({ page, loginPageFixture, dashboardPage }) => {
+    test('login and logout functionality @smoke', async ({ page, loginPageFixture, dashboardPage }) => {
         await page.goto('/login');
 
         await loginPageFixture.loginToApplication(user.userName, user.password);

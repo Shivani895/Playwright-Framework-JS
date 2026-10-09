@@ -6,7 +6,7 @@ import multiUser from '../test-data/multipleUsers.json'
 
 for(let user of multiUser)
 {
-    test(`login functionality Error scenarios ${user.id}`, async ({ page }) => {
+    test(`login functionality Error scenarios ${user.id} @regression`, async ({ page }) => {
     await page.goto('/login');
 
     const loginPage = new LoginPage(page);

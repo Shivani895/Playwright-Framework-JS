@@ -10,6 +10,14 @@ pipeline{
     choice( name: 'ENVIRONMENT',
      choices: ['PRACTICE', 'DEV', 'QA', 'UAT'], 
      description: 'Select the target environment' )
+     
+choice(
+    name: 'SUITE',
+    choices: ['ALL', 'SMOKE', 'REGRESSION'],
+    description: 'Select which test suite to execute'
+)
+
+
    }
     stages{
         stage('Show Parameters')
@@ -34,13 +42,24 @@ pipeline{
             }
         }
 
-        stage('Run Tests')
-        {
-            environment { ENVIRONMENT = "${params.ENVIRONMENT}" }
-            steps{
+      
+    stage('Run Tests') {
+    environment {
+        ENVIRONMENT = "${params.ENVIRONMENT}"
+    }
+    steps {
+        script {
+            if (params.SUITE == 'ALL') {
                 sh "npx playwright test --project=${params.BROWSER}"
+            } else if (params.SUITE == 'SMOKE') {
+                sh "npx playwright test --project=${params.BROWSER} --grep='@smoke'"
+            } else if (params.SUITE == 'REGRESSION') {
+                sh "npx playwright test --project=${params.BROWSER} --grep='@regression'"
             }
         }
+    }
+}
+
 
     }
 }
