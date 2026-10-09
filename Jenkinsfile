@@ -48,6 +48,7 @@ choice(
         ENVIRONMENT = "${params.ENVIRONMENT}"
     }
     steps {
+         sh 'rm -rf allure-results test-results playwright-report'
         script {
             if (params.SUITE == 'ALL') {
                 sh "npx playwright test --project=${params.BROWSER}"
@@ -62,4 +63,25 @@ choice(
 
 
     }
+   
+post {
+    always {
+        junit(
+            testResults: 'test-results/results.xml',
+            allowEmptyResults: true
+        )
+
+        archiveArtifacts(
+            artifacts: 'playwright-report/**, allure-results/**, test-results/**',
+            allowEmptyArchive: true
+        )
+
+        allure(
+            includeProperties: false,
+            results: [[path: 'allure-results']]
+        )
+    }
+}
+
+
 }
