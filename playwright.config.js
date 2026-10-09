@@ -2,6 +2,32 @@
 import { defineConfig, devices } from '@playwright/test';
 
 
+const environmentUrls = {
+  PRACTICE: 'https://freelance-learn-automation.vercel.app',
+
+  // Add real URLs when available:
+  // DEV: 'https://your-real-dev-url',
+  // QA: 'https://your-real-qa-url',
+  // UAT: 'https://your-real-uat-url',
+};
+
+const selectedEnvironment = process.env.ENVIRONMENT;
+
+if (!selectedEnvironment) {
+  throw new Error(
+    'ENVIRONMENT is not set. Select an environment in Jenkins.'
+  );
+}
+
+const baseURL = environmentUrls[selectedEnvironment];
+
+if (!baseURL) {
+  throw new Error(
+    `No URL configured for environment: ${selectedEnvironment}`
+  );
+}
+
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -18,7 +44,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: process.env.ENVIRONMENT === 'PRACTICE' ? 'https://freelance-learn-automation.vercel.app' : undefined,
+    baseURL: baseURL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',

@@ -1,6 +1,6 @@
 pipeline{
     agent any
-
+//modified jenkins file
    parameters{
     choice(
         name: 'BROWSER',
@@ -35,6 +35,7 @@ pipeline{
 
         stage('Run Tests')
         {
+            environment { ENVIRONMENT = "${params.ENVIRONMENT}" }
             steps{
                 sh "npx playwright test --project=${params.BROWSER}"
             }
@@ -42,4 +43,3 @@ pipeline{
 
     }
 }
-//modified jenkins file
