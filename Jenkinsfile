@@ -61,23 +61,6 @@ choice(
     }
 }
 
-stage('Demonstrate Failure Control') {
-    steps {
-        catchError(
-            buildResult: 'FAILURE',
-            stageResult: 'FAILURE'
-        ) {
-            echo 'Step 1: About to simulate a failure'
-            error('Demonstration error: testing catchError')
-        }
-    }
-}
-
-stage('After Demonstration') {
-    steps {
-        echo 'Step 2: Pipeline continued after the caught error'
-    }
-}
 
 
 
