@@ -4,7 +4,7 @@ pipeline{
    parameters{
     choice(
         name: 'BROWSER',
-        choices: ['chromiun','firefox','webkit'],
+        choices: ['chromium','firefox','webkit'],
         description: 'Select the browser to execute tests'
     )
    }
@@ -12,7 +12,7 @@ pipeline{
         stage('Show Parameters')
         {
             steps{
-                echo "Selected Browser: ${params.BROWSERA}"
+                echo "Selected Browser: ${params.BROWSER}"
             }
         }
        
@@ -33,9 +33,10 @@ pipeline{
         stage('Run Tests')
         {
             steps{
-                sh 'npx playwright test --project=${params.BROWSER}'
+                sh "npx playwright test --project=${params.BROWSER}"
             }
         }
 
     }
 }
+//modified jenkins file
