@@ -1,5 +1,15 @@
 pipeline{
     agent any
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        buildDiscarder(logRotator(
+            numToKeepStr: '20',
+            artifactNumToKeepStr: '10'
+        ))
+        disableConcurrentBuilds()
+        timestamps()
+    }
+
 //modified jenkins file
    parameters{
     choice(
