@@ -7,6 +7,9 @@ pipeline{
         choices: ['chromium','firefox','webkit'],
         description: 'Select the browser to execute tests'
     )
+    choice( name: 'ENVIRONMENT',
+     choices: ['PRACTICE', 'DEV', 'QA', 'UAT'], 
+     description: 'Select the target environment' )
    }
     stages{
         stage('Show Parameters')
