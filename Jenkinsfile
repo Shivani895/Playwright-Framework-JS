@@ -38,6 +38,25 @@ choice(
             }
         }
        
+stage('Parallelism Demo') {
+    parallel {
+        stage('Branch A') {
+            steps {
+                echo 'Branch A started'
+                sh 'sleep 10'
+                echo 'Branch A finished'
+            }
+        }
+
+        stage('Branch B') {
+            steps {
+                echo 'Branch B started'
+                sh 'sleep 10'
+                echo 'Branch B finished'
+            }
+        }
+    }
+}
         stage('Install Dependencies')
         {
             steps{
