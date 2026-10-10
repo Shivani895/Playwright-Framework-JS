@@ -10,7 +10,7 @@ pipeline{
         timestamps()
     }
 
-//modified jenkins file
+//modified jenkins filee
    parameters{
     choice(
         name: 'BROWSER',
